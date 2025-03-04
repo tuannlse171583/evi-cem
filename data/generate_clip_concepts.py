@@ -114,8 +114,8 @@ def get_ref_embed(model, device):
 
 
 if __name__ == "__main__":
-    model, preprocessor = clip.load("ViT-L/14", device="cuda", jit=False)
-    model.load_state_dict(torch.hub.load_state_dict_from_url("https://aimslab.cs.washington.edu/MONET/weight_clip.pt", map_location="cuda"))
+    model, preprocessor = clip.load("ViT-L/14", device="cpu", jit=False)
+    model.load_state_dict(torch.hub.load_state_dict_from_url("https://aimslab.cs.washington.edu/MONET/weight_clip.pt", map_location="cpu"))
     model.eval()
 
     # load meta data
@@ -138,8 +138,8 @@ if __name__ == "__main__":
 
     concept_list = list(df.columns)[2:]
 
-    concept_embed_dict = get_concept_embed(model, concept_list, "cuda")
-    ref_embed = get_ref_embed(model, "cuda")
+    concept_embed_dict = get_concept_embed(model, concept_list, "cpu")
+    ref_embed = get_ref_embed(model, "cpu")
 
     meta_label_list = []
     wrong_image_ids = []
@@ -151,6 +151,7 @@ if __name__ == "__main__":
 
         if sample.three_partition_label == "non-neoplastic":
             meta_label.append(0)
+
         elif sample.three_partition_label == "benign":
             meta_label.append(1)
         elif sample.three_partition_label == "malignant":
@@ -159,7 +160,9 @@ if __name__ == "__main__":
         meta_label.extend(list(sample.iloc[2:]))
 
         image = Image.open(f"data/raw_data/{image_name}")
-        image = preprocessor(image).unsqueeze(0).cuda()
+        image = preprocessor(image).unsqueeze(0)
+
+    
 
         with torch.no_grad():
             image_embed = model.encode_image(image)
