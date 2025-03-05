@@ -29,7 +29,7 @@ class SkinConDataset(Dataset):
     def __getitem__(self, index):
         sample = self.data_frame.iloc[index, :]
 
-        image = Image.open(f"{self.data_dir}/raw_data/{sample.id}")
+        image = Image.open(f"{self.data_dir}/drive/MyDrive/data_backup/raw_data/{sample.id}")
         image = self.transform(image)
 
         concept = torch.FloatTensor(list(sample.iloc[2 : self.concept_num + 2]))
@@ -70,7 +70,7 @@ class SkinConDataModule(pl.LightningDataModule):
         )
 
     def prepare_data(self):
-        df = pd.read_csv(f"{self.data_dir}/meta_data/clip_skincon.csv")
+        df = pd.read_csv(f"{self.data_dir}/drive/MyDrive/data_backup/meta_data/clip_skincon.csv")
 
         df_w_gt, df_wo_gt = df[df["Abscess"].notna()], df[df["Abscess"].isna()]
 
