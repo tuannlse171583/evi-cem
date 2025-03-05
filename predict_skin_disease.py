@@ -5,8 +5,9 @@ from models.evi_cem import Evidential_CEM
 
 # Load mô hình đã huấn luyện
 ckpt_path = "checkpoints/last.ckpt"
-model = Evidential_CEM.load_from_checkpoint(ckpt_path)
-model.eval().cuda()
+model = Evidential_CEM.load_from_checkpoint(ckpt_path, map_location=torch.device("cuda" if torch.cuda.is_available() else "cpu"))
+model.eval().to(torch.device("cuda" if torch.cuda.is_available() else "cpu"))
+
 
 # Tiền xử lý ảnh
 transform = transforms.Compose([
