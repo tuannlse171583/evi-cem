@@ -24,8 +24,8 @@ if __name__ == "__main__":
     callbacks.append(checkpoint_callback)
 
     trainer = pl.Trainer(
-        accelerator="gpu",
-        devices=[config["device"]],
+        accelerator="cpu",
+        devices=config["device"],  
         max_epochs=config["max_epochs"],
         check_val_every_n_epoch=config["val_every_n_epochs"],
         log_every_n_steps=5,
