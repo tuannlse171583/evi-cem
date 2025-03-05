@@ -25,7 +25,17 @@ def predict_skin_disease(image_path):
 
     # Dự đoán triệu chứng
     c_probs = alpha / (alpha + beta)
-    concept_names = ["Abscess", "Atrophy", "Black", "Blue", "Brown", "Bulla"]  # Cập nhật danh sách đầy đủ
+    concept_names = [
+    "Vesicle", "Papule", "Macule", "Plaque", "Abscess", "Pustule", "Bulla", "Patch",
+    "Nodule", "Ulcer", "Crust", "Erosion", "Excoriation", "Atrophy", "Exudate",
+    "Purpura/Petechiae", "Fissure", "Induration", "Xerosis", "Telangiectasia",
+    "Scale", "Scar", "Friable", "Sclerosis", "Pedunculated", "Exophytic/Fungating",
+    "Warty/Papillomatous", "Dome-shaped", "Flat topped", "Brown(Hyperpigmentation)",
+    "Translucent", "White(Hypopigmentation)", "Purple", "Yellow", "Black",
+    "Erythema", "Comedo", "Lichenification", "Blue", "Umbilicated", "Poikiloderma",
+    "Salmon", "Wheal", "Acuminate", "Burrow", "Gray", "Pigmented", "Cyst"
+     ]
+
     detected_concepts = [concept_names[i] for i, prob in enumerate(c_probs.squeeze()) if prob > 0.5]
 
     # Dự đoán bệnh
