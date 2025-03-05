@@ -2,11 +2,11 @@
 project_name: evi-CEM
 exp_name: default
 seed: 3
-device: 0
+device: 1
 
 # data
 dataset: skincon
-data_dir: data/
+data_dir: /content
 batch_size: 128
 concept_weight: true
 train_with_c_gt: true
