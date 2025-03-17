@@ -43,9 +43,7 @@ python train.py --config configs/label_efficient.yaml
 python learn_cavs.py --config configs/learn_cavs.yaml
 python train.py --config configs/train_rectified.yaml
 ```
-## 🙋 Feedback and Contact
-- ybgao22@m.fudan.edu.cn
-- zxh@fudan.edu.cn
+
 
 ## 🛡️ License
 This project is under the Apache-2.0 license. See [LICENSE](LICENSE) for details.
