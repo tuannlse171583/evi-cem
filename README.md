@@ -1,9 +1,4 @@
-# Evidential Concept Embedding Models
-Welcome👋! This repository provides the official implementation of our paper *Evidential Concept Embedding Models: Towards Reliable Concept Explanations for Skin Disease Diagnosis* (**evi-CEM**) [[arXiv](https://arxiv.org/abs/2406.19130)], which has been accepted by *MICCAI 2024*.
 
-## 💡 TL;DR
-![evi-cem](https://cdn.jsdelivr.net/gh/obiyoag/images@main/data/evi-cem.png)
-> Concept Bottleneck Models (CBM) incorporate human-interpretable concepts into decision-making. However, their concept predictions may lack reliability when applied to clinical diagnosis. To address this, we propose an **evi**dential **C**oncept **E**mbedding **M**odel (**evi-CEM**), which employs evidential learning to model the concept uncertainty. Additionally, we offer to leverage the concept uncertainty to rectify concept misalignments that arise when training CBMs using vision-language models without complete concept supervision.
 
 ## 📦 Get started
 
@@ -44,22 +39,3 @@ python learn_cavs.py --config configs/learn_cavs.yaml
 python train.py --config configs/train_rectified.yaml
 ```
 
-
-## 🛡️ License
-This project is under the Apache-2.0 license. See [LICENSE](LICENSE) for details.
-
-## 🙏 Acknowledgement
-- We are grateful to [cem](https://github.com/mateoespinosa/cem) for publicly sharing their code, which we have drawn upon in our work.
-- We appreciate the open-source dermatology dataset [Fitzpatrick17k](https://github.com/mattgroh/fitzpatrick17k) and the [SkinCon concept annotations](https://skincon-dataset.github.io) for it.
-- We appreciate the effort of [MONET](https://github.com/suinleelab/MONET) to train and release the dermatology vision-language model.
-
-## 📝 Citation
-If our work or code is helpful in your research, please star this repo and cite our paper as follows.
-```
-@inproceedings{Gao2024eviCEM,
-    author={Yibo Gao, Zheyao Gao, Xin Gao, Yuanye Liu, Bomin Wang, Xiahai Zhuang},
-    title={Evidential Concept Embedding Models: Towards Reliable Concept Explanations for Skin Disease Diagnosis},
-    booktitle={International Conference on Medical Image Computing and Computer Assisted Intervention},
-    year={2024}
-}
-```
